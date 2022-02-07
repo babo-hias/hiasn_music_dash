@@ -5,6 +5,7 @@ from dash import dcc, html, dash_table
 import pandas as pd
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from spotipy import MemoryCacheHandler
 from io import BytesIO
 from wordcloud import WordCloud
 import base64
@@ -290,11 +291,13 @@ def get_playlists_datatable():
 colors = {'short': '#5BC0DE', 'medium': '#01D857', 'long': '#FDE724',
           'background_dunkel': '#222222', 'background_hell': '#303030',
           'spotify_green': '#01D857'}
-# client_id = os.environ["CLIENT_ID"]
-# client_secret = os.environ["CLIENT_SECRET"]
-# redirect_uri = os.environ["REDIRECT_URL"]
-# callback_uri = os.environ["CALLBACK_URL"]
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
+redirect_uri = os.environ["REDIRECT_URL"]
+callback_uri = os.environ["CALLBACK_URL"]
 scope = os.environ["SCOPE"]
+token = os.environ["TOKEN"]
+username = os.environ["USER_NAME"]
 ################################################
 list_length_tracks = 50
 list_length_artists = 50
@@ -361,8 +364,9 @@ dict_audio_features = {'short_term': [], 'medium_term': [], 'long_term': []}
 dict_playlists_id = {'short_term': [], 'medium_term': [], 'long_term': []}
 
 ''' Spotify Authentication & DataFrame Creation'''
-#spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, scope=scope, redirect_uri=redirect_uri))
-spotify = spotipy.Spotify(auth=os.environ["TOKEN"])
+# spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, scope=scope, redirect_uri=redirect_uri))
+spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, username=username, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, show_dialog=False, cache_handler=MemoryCacheHandler(token_info=token)))
+# spotify = spotipy.Spotify(auth=os.environ["TOKEN"])
 
 df_tracks, df_artists, df_playlists, df_tracks_table, df_artists_table, df_tracks_timeline, df_artists_genre, df_konzerte = create_dfs_from_spotify()
 
