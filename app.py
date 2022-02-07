@@ -290,10 +290,10 @@ def get_playlists_datatable():
 colors = {'short': '#5BC0DE', 'medium': '#01D857', 'long': '#FDE724',
           'background_dunkel': '#222222', 'background_hell': '#303030',
           'spotify_green': '#01D857'}
-client_id = os.environ["CLIENT_ID"]
-client_secret = os.environ["CLIENT_SECRET"]
-redirect_uri = os.environ["REDIRECT_URL"]
-callback_uri = os.environ["CALLBACK_URL"]
+# client_id = os.environ["CLIENT_ID"]
+# client_secret = os.environ["CLIENT_SECRET"]
+# redirect_uri = os.environ["REDIRECT_URL"]
+# callback_uri = os.environ["CALLBACK_URL"]
 scope = os.environ["SCOPE"]
 ################################################
 list_length_tracks = 50
