@@ -365,8 +365,8 @@ dict_playlists_id = {'short_term': [], 'medium_term': [], 'long_term': []}
 
 ''' Spotify Authentication & DataFrame Creation'''
 # spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, scope=scope, redirect_uri=redirect_uri))
-spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, username=username, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, show_dialog=False, cache_handler=MemoryCacheHandler(token_info=token)))
-# spotify = spotipy.Spotify(auth=os.environ["TOKEN"])
+# spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, username=username, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, show_dialog=False, cache_handler=MemoryCacheHandler(token_info=token)))
+spotify = spotipy.Spotify(auth=os.environ["TOKEN"])
 
 df_tracks, df_artists, df_playlists, df_tracks_table, df_artists_table, df_tracks_timeline, df_artists_genre, df_konzerte = create_dfs_from_spotify()
 
