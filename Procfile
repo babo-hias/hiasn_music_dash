@@ -1,1 +1,1 @@
-web: gunicorn hiasn_music_dash:app
+web: gunicorn app:server

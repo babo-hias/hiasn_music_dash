@@ -376,7 +376,7 @@ concerts_average = '{:,.2f}'.format(concerts_amount / (datetime.datetime.now().y
 #######################################################################
 
 app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY], suppress_callback_exceptions=True, title='> Hiasn Music Dashboard <')
-
+server = app.server
 
 app.layout = html.Div([
     dcc.Tabs(id='menu-tabs', value='tracks', children=[
